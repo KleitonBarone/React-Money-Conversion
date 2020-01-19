@@ -1,7 +1,8 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Conversor from './components/Conversor'
+import Placargol from './components/Placargol'
+import Todolist from './components/Todolist'
 
 function App() {
   return (
@@ -18,6 +19,9 @@ function App() {
       <div className="linha">
         <Conversor moedaA="EUR" moedaB="BRL"/>
         <Conversor moedaA="BRL" moedaB="EUR"/>
+      </div>
+      <div className="linha">
+        <Placargol timeA="Flamengo" timeB="Vasco"/>
       </div>
     </div>
   );
