@@ -1,5 +1,6 @@
 import React from 'react'
 import './Todolist.css'
+import Todoitem from './Todoitem'
 
 export default class Todolist extends React.Component {
 
@@ -7,7 +8,7 @@ export default class Todolist extends React.Component {
         super(props)
 
         this.state = {
-            teste: 0
+            
         }
 
     }
@@ -21,6 +22,8 @@ export default class Todolist extends React.Component {
                 <h2>Todolist</h2>
                 <input type="text" id="task"/>
                 <input type="button" value="Add" />
+
+                <Todoitem item="Aprender React"/>
                 
             </div>
           )

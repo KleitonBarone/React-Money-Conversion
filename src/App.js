@@ -23,6 +23,9 @@ function App() {
       <div className="linha">
         <Placargol timeA="Flamengo" timeB="Vasco"/>
       </div>
+      <div className="linha">
+        <Todolist/>
+      </div>
     </div>
   );
 }
