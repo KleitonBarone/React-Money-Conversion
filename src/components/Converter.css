@@ -1,4 +1,4 @@
-.conversor {
+.converter {
     background: var(--glass-bg);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
@@ -14,12 +14,12 @@
     max-width: 350px;
 }
 
-.conversor:hover {
+.converter:hover {
     transform: translateY(-4px);
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
 }
 
-.conversor h2 {
+.converter h2 {
     margin: 0;
     font-size: 1.25rem;
     font-weight: 600;
@@ -74,7 +74,7 @@
     align-items: center;
 }
 
-.conversor input[type="number"] {
+.converter input[type="number"] {
     width: 100%;
     padding: 12px 16px;
     border-radius: 8px;
@@ -86,11 +86,11 @@
     transition: border-color 0.2s;
 }
 
-.conversor input[type="number"]:focus {
+.converter input[type="number"]:focus {
     border-color: var(--primary-color);
 }
 
-.conversor button {
+.converter button {
     padding: 12px;
     border-radius: 8px;
     border: none;
@@ -102,7 +102,7 @@
     transition: background 0.2s;
 }
 
-.conversor button:hover {
+.converter button:hover {
     background: var(--primary-hover);
 }
 

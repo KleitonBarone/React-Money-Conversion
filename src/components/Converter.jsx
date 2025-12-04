@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-import './Conversor.css';
+import './Converter.css';
 
-const Conversor = () => {
-    const [moedaA, setMoedaA] = useState("USD");
-    const [moedaB, setMoedaB] = useState("BRL");
-    const [moedaA_valor, setMoedaA_valor] = useState("");
-    const [moedaB_valor, setMoedaB_valor] = useState(0);
+const Converter = () => {
+    const [currencyA, setCurrencyA] = useState("USD");
+    const [currencyB, setCurrencyB] = useState("BRL");
+    const [currencyA_value, setCurrencyA_value] = useState("");
+    const [currencyB_value, setCurrencyB_value] = useState(0);
 
-    const converter = () => {
-        let de_para = `${moedaA}_${moedaB}`;
+    const convert = () => {
+        let from_to = `${currencyA}_${currencyB}`;
 
         // In a real app, you would fetch this from an API.
         // For this demo, we'll keep the hardcoded rates or fetch if possible.
@@ -22,29 +22,29 @@ const Conversor = () => {
             "BRL_EUR": 0.161
         };
 
-        let cotacao = rates[de_para];
+        let rate = rates[from_to];
 
-        if (cotacao) {
-            let valor = parseFloat(moedaA_valor);
-            if (isNaN(valor)) {
-                setMoedaB_valor(0);
+        if (rate) {
+            let value = parseFloat(currencyA_value);
+            if (isNaN(value)) {
+                setCurrencyB_value(0);
             } else {
-                let valorConvertido = (valor * cotacao).toFixed(2);
-                setMoedaB_valor(valorConvertido);
+                let convertedValue = (value * rate).toFixed(2);
+                setCurrencyB_value(convertedValue);
             }
         } else {
             // Fallback or API call could go here
-            console.warn(`Rate for ${de_para} not found.`);
-            setMoedaB_valor("---");
+            console.warn(`Rate for ${from_to} not found.`);
+            setCurrencyB_value("---");
         }
     };
 
     return (
-        <div className="conversor">
+        <div className="converter">
             <div className="currency-selectors">
                 <div className="selector-group">
-                    <label>De:</label>
-                    <select value={moedaA} onChange={(e) => { setMoedaA(e.target.value); setMoedaB_valor(0); }}>
+                    <label>From:</label>
+                    <select value={currencyA} onChange={(e) => { setCurrencyA(e.target.value); setCurrencyB_value(0); }}>
                         <option value="USD">USD</option>
                         <option value="BRL">BRL</option>
                         <option value="CAD">CAD</option>
@@ -53,8 +53,8 @@ const Conversor = () => {
                 </div>
 
                 <div className="selector-group">
-                    <label>Para:</label>
-                    <select value={moedaB} onChange={(e) => { setMoedaB(e.target.value); setMoedaB_valor(0); }}>
+                    <label>To:</label>
+                    <select value={currencyB} onChange={(e) => { setCurrencyB(e.target.value); setCurrencyB_value(0); }}>
                         <option value="USD">USD</option>
                         <option value="BRL">BRL</option>
                         <option value="CAD">CAD</option>
@@ -67,18 +67,18 @@ const Conversor = () => {
                 <input
                     type="number"
                     placeholder="0.00"
-                    onChange={(event) => setMoedaA_valor(event.target.value)}
+                    onChange={(event) => setCurrencyA_value(event.target.value)}
                 />
             </div>
 
-            <button onClick={converter}>Converter</button>
+            <button onClick={convert}>Convert</button>
 
             <div className="result">
-                <span className="value">{moedaB_valor}</span>
-                <span className="currency">{moedaB}</span>
+                <span className="value">{currencyB_value}</span>
+                <span className="currency">{currencyB}</span>
             </div>
         </div>
     );
 };
 
-export default Conversor;
+export default Converter;
