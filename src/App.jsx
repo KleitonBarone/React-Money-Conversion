@@ -10,7 +10,7 @@ function App() {
         <p>Convert currencies in real-time with ease.</p>
       </header>
 
-      <div className="grid-container" style={{ display: 'flex', justifyContent: 'center' }}>
+      <div className="grid-container">
         <Converter />
       </div>
     </div>
