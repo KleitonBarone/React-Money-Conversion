@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Converter.css';
 
 const Converter = () => {
@@ -7,7 +7,8 @@ const Converter = () => {
     const [currencyA_value, setCurrencyA_value] = useState("");
     const [currencyB_value, setCurrencyB_value] = useState(0);
 
-    const convert = () => {
+    // Automatically convert whenever input or currencies change
+    useEffect(() => {
         let from_to = `${currencyA}_${currencyB}`;
 
         // In a real app, you would fetch this from an API.
@@ -26,7 +27,7 @@ const Converter = () => {
 
         if (rate) {
             let value = parseFloat(currencyA_value);
-            if (isNaN(value)) {
+            if (isNaN(value) || currencyA_value === "") {
                 setCurrencyB_value(0);
             } else {
                 let convertedValue = (value * rate).toFixed(2);
@@ -37,14 +38,14 @@ const Converter = () => {
             console.warn(`Rate for ${from_to} not found.`);
             setCurrencyB_value("---");
         }
-    };
+    }, [currencyA_value, currencyA, currencyB]);
 
     return (
         <div className="converter">
             <div className="currency-selectors">
                 <div className="selector-group">
                     <label>From:</label>
-                    <select value={currencyA} onChange={(e) => { setCurrencyA(e.target.value); setCurrencyB_value(0); }}>
+                    <select value={currencyA} onChange={(e) => setCurrencyA(e.target.value)}>
                         <option value="USD">USD</option>
                         <option value="BRL">BRL</option>
                         <option value="CAD">CAD</option>
@@ -54,7 +55,7 @@ const Converter = () => {
 
                 <div className="selector-group">
                     <label>To:</label>
-                    <select value={currencyB} onChange={(e) => { setCurrencyB(e.target.value); setCurrencyB_value(0); }}>
+                    <select value={currencyB} onChange={(e) => setCurrencyB(e.target.value)}>
                         <option value="USD">USD</option>
                         <option value="BRL">BRL</option>
                         <option value="CAD">CAD</option>
@@ -67,11 +68,17 @@ const Converter = () => {
                 <input
                     type="number"
                     placeholder="0.00"
-                    onChange={(event) => setCurrencyA_value(event.target.value)}
+                    min="0"
+                    step="0.01"
+                    onChange={(event) => {
+                        const value = event.target.value;
+                        // Only allow positive numbers or empty string
+                        if (value === "" || parseFloat(value) >= 0) {
+                            setCurrencyA_value(value);
+                        }
+                    }}
                 />
             </div>
-
-            <button onClick={convert}>Convert</button>
 
             <div className="result">
                 <span className="value">{currencyB_value}</span>
