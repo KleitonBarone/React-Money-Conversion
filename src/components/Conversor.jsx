@@ -17,18 +17,23 @@ export default class Conversor extends React.Component {
     converter() {
 
         let de_para = `${this.props.moedaA}_${this.props.moedaB}`
-        let apiKey = '300123bfe0bd0ad9e741'
-        let url = `https://free.currconv.com/api/v7/convert?q=${de_para}&apiKey=${apiKey}`
 
-        
-        fetch(url).then(res=>{
-            return res.json()
-        }).then(json => {
-            let cotacao = json['results'][de_para].val
+        const rates = {
+            "USD_BRL": 5.31,
+            "BRL_USD": 0.188,
+            "CAD_BRL": 3.82,
+            "BRL_CAD": 0.262,
+            "EUR_BRL": 6.20,
+            "BRL_EUR": 0.161
+        }
+
+        let cotacao = rates[de_para]
+
+        if (cotacao) {
             let moedaB_valor = (parseFloat((this.state.moedaA_valor * cotacao).toFixed(2)))
-            this.setState({moedaB_valor})
-        })
-        
+            this.setState({ moedaB_valor })
+        }
+
     }
 
     render() {
@@ -42,8 +47,8 @@ export default class Conversor extends React.Component {
                 <input type="button" value="Converter" onClick={this.converter}></input>
                 <h2>{this.state.moedaB_valor}</h2>
             </div>
-          )
+        )
 
     }
-        
-  }
+
+}
