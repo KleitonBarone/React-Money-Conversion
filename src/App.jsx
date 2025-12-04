@@ -10,15 +10,8 @@ function App() {
         <p>Converta moedas em tempo real com facilidade.</p>
       </header>
 
-      <div className="grid-container">
-        <Conversor moedaA="USD" moedaB="BRL" />
-        <Conversor moedaA="BRL" moedaB="USD" />
-
-        <Conversor moedaA="CAD" moedaB="BRL" />
-        <Conversor moedaA="BRL" moedaB="CAD" />
-
-        <Conversor moedaA="EUR" moedaB="BRL" />
-        <Conversor moedaA="BRL" moedaB="EUR" />
+      <div className="grid-container" style={{ display: 'flex', justifyContent: 'center' }}>
+        <Conversor />
       </div>
     </div>
   );

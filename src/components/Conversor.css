@@ -10,6 +10,8 @@
     flex-direction: column;
     gap: 16px;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
+    width: 100%;
+    max-width: 350px;
 }
 
 .conversor:hover {
@@ -26,6 +28,46 @@
     margin-bottom: 8px;
 }
 
+.currency-selectors {
+    display: flex;
+    gap: 12px;
+    justify-content: space-between;
+}
+
+.selector-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+}
+
+.selector-group label {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+.selector-group select {
+    width: 100%;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid var(--glass-border);
+    background: rgba(0, 0, 0, 0.2);
+    color: var(--text-primary);
+    font-size: 1rem;
+    outline: none;
+    cursor: pointer;
+}
+
+.selector-group select:focus {
+    border-color: var(--primary-color);
+}
+
+.selector-group select option {
+    background: #222;
+    /* Fallback dark background for options */
+    color: white;
+}
+
 .input-group {
     position: relative;
     display: flex;
@@ -35,8 +77,6 @@
 .conversor input[type="number"] {
     width: 100%;
     padding: 12px 16px;
-    padding-right: 50px;
-    /* Space for currency label */
     border-radius: 8px;
     border: 1px solid var(--glass-border);
     background: rgba(0, 0, 0, 0.2);
@@ -48,14 +88,6 @@
 
 .conversor input[type="number"]:focus {
     border-color: var(--primary-color);
-}
-
-.currency-label {
-    position: absolute;
-    right: 16px;
-    color: var(--text-secondary);
-    font-size: 0.875rem;
-    font-weight: 600;
 }
 
 .conversor button {

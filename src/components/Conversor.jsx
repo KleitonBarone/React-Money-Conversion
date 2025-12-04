@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import './Conversor.css';
 
-const Conversor = ({ moedaA, moedaB }) => {
+const Conversor = () => {
+    const [moedaA, setMoedaA] = useState("USD");
+    const [moedaB, setMoedaB] = useState("BRL");
     const [moedaA_valor, setMoedaA_valor] = useState("");
     const [moedaB_valor, setMoedaB_valor] = useState(0);
 
@@ -28,19 +30,42 @@ const Conversor = ({ moedaA, moedaB }) => {
         } else {
             // Fallback or API call could go here
             console.warn(`Rate for ${de_para} not found.`);
+            setMoedaB_valor("---");
         }
     };
 
     return (
         <div className="conversor">
-            <h2>{moedaA} para {moedaB}</h2>
+            <h2>Conversor de Moedas</h2>
+
+            <div className="currency-selectors">
+                <div className="selector-group">
+                    <label>De:</label>
+                    <select value={moedaA} onChange={(e) => setMoedaA(e.target.value)}>
+                        <option value="USD">USD</option>
+                        <option value="BRL">BRL</option>
+                        <option value="CAD">CAD</option>
+                        <option value="EUR">EUR</option>
+                    </select>
+                </div>
+
+                <div className="selector-group">
+                    <label>Para:</label>
+                    <select value={moedaB} onChange={(e) => setMoedaB(e.target.value)}>
+                        <option value="USD">USD</option>
+                        <option value="BRL">BRL</option>
+                        <option value="CAD">CAD</option>
+                        <option value="EUR">EUR</option>
+                    </select>
+                </div>
+            </div>
+
             <div className="input-group">
                 <input
                     type="number"
                     placeholder="0.00"
                     onChange={(event) => setMoedaA_valor(event.target.value)}
                 />
-                <span className="currency-label">{moedaA}</span>
             </div>
 
             <button onClick={converter}>Converter</button>
