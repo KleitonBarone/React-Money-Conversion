@@ -1,6 +1,7 @@
 .App {
   width: 100%;
   max-width: 1200px;
+  min-width: 320px;
   padding: 40px 20px;
   margin: 0 auto;
 }
@@ -14,7 +15,7 @@
   font-size: 3rem;
   font-weight: 800;
   margin: 0;
-  background: linear-gradient(to right, #60a5fa, #a855f7);
+  background: #60a5fa;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
