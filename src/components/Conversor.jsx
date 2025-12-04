@@ -25,8 +25,13 @@ const Conversor = () => {
         let cotacao = rates[de_para];
 
         if (cotacao) {
-            let valorConvertido = (parseFloat(moedaA_valor) * cotacao).toFixed(2);
-            setMoedaB_valor(valorConvertido);
+            let valor = parseFloat(moedaA_valor);
+            if (isNaN(valor)) {
+                setMoedaB_valor(0);
+            } else {
+                let valorConvertido = (valor * cotacao).toFixed(2);
+                setMoedaB_valor(valorConvertido);
+            }
         } else {
             // Fallback or API call could go here
             console.warn(`Rate for ${de_para} not found.`);
@@ -36,12 +41,10 @@ const Conversor = () => {
 
     return (
         <div className="conversor">
-            <h2>Conversor de Moedas</h2>
-
             <div className="currency-selectors">
                 <div className="selector-group">
                     <label>De:</label>
-                    <select value={moedaA} onChange={(e) => setMoedaA(e.target.value)}>
+                    <select value={moedaA} onChange={(e) => { setMoedaA(e.target.value); setMoedaB_valor(0); }}>
                         <option value="USD">USD</option>
                         <option value="BRL">BRL</option>
                         <option value="CAD">CAD</option>
@@ -51,7 +54,7 @@ const Conversor = () => {
 
                 <div className="selector-group">
                     <label>Para:</label>
-                    <select value={moedaB} onChange={(e) => setMoedaB(e.target.value)}>
+                    <select value={moedaB} onChange={(e) => { setMoedaB(e.target.value); setMoedaB_valor(0); }}>
                         <option value="USD">USD</option>
                         <option value="BRL">BRL</option>
                         <option value="CAD">CAD</option>
