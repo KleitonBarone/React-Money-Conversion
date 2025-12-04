@@ -1,17 +1,17 @@
 import React from 'react';
 import './App.css';
-import Conversor from './components/Conversor';
+import Converter from './components/Converter';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Conversor de Moedas</h1>
-        <p>Converta moedas em tempo real com facilidade.</p>
+        <h1>Currency Converter</h1>
+        <p>Convert currencies in real-time with ease.</p>
       </header>
 
       <div className="grid-container" style={{ display: 'flex', justifyContent: 'center' }}>
-        <Conversor />
+        <Converter />
       </div>
     </div>
   );

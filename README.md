@@ -1,20 +1,20 @@
-# Conversor de Moedas React Native
-Fazendo um Conversor em React
+# React Money Converter
+Building a Converter in React
 
-### Prerequisitos
+### Prerequisites
 
-npm e npx instalados
+npm and npx installed
 
-## Rodando
+## Running
 
-Vá até o diretorio do projeto e execute o comando 'npm install' para instalar todas as dependencias depois execute o comando 'npm start' para iniciar o projeto
+Navigate to the project directory and run the 'npm install' command to install all dependencies, then run the 'npm run dev' command to start the project
 
 ```
-./projeto> npm install
-./projeto> npm start
+./project> npm install
+./project> npm run dev
 ```
-pronto, o projeto estara rodando em localhost, na porta 3000
+Done! The project will be running on localhost, on the default Vite port
 
-## Autor
+## Author
 
 * **Kleiton Barone** - [GitHub](https://github.com/KleitonBarone)
