@@ -1,14 +1,45 @@
-.linha {
-  display: flex;
-  margin-top: 40px;
-  justify-content: space-around;
-}
-
-h1 {
-  text-align: center;
-}
-
 .App {
-  margin: auto;
-  max-width: 400px;
+  width: 100%;
+  max-width: 1200px;
+  padding: 40px 20px;
+  margin: 0 auto;
+}
+
+.App-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.App-header h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  margin: 0;
+  background: linear-gradient(to right, #60a5fa, #a855f7);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -1px;
+}
+
+.App-header p {
+  color: var(--text-secondary);
+  font-size: 1.125rem;
+  margin-top: 16px;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 32px;
+  justify-content: center;
+}
+
+@media (max-width: 640px) {
+  .App-header h1 {
+    font-size: 2rem;
+  }
+
+  .grid-container {
+    grid-template-columns: 1fr;
+  }
 }
